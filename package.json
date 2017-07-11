@@ -1,46 +1,86 @@
 {
-  "name": "ink-checkbox-list",
-  "version": "1.0.2",
-  "main": "lib/index.js",
-  "description": " Checkbox list component for ink.",
-  "repository": "ssh://git@github.com/MaxMEllon/ink-checkbox-list.git",
-  "author": "MaxMEllon <maxmellon1994@gmail.com>",
-  "license": "MIT",
-  "engines": {
-    "node": ">=6"
-  },
-  "files": [
-    "lib"
-  ],
-  "keywords": [
-    "ink",
-    "text",
-    "input",
-    "component",
-    "jsx",
-    "react",
-    "stdin"
-  ],
-  "scripts": {
-    "build": "babel src --out-dir lib",
-    "release": "npm run build && npm test && npm publish",
-    "test": "standard src/**/*.js"
-  },
-  "babel": {
-    "plugins": [
-      [
-        "babel-plugin-array-includes"
-      ]
-    ]
-  },
-  "devDependencies": {
-    "ava": "^0.20.0",
-    "babel-cli": "^6.24.1",
-    "babel-plugin-array-includes": "^2.0.3",
-    "ink": "^0.1.2",
-    "standard": "^10.0.2"
-  },
-  "peerDependencies": {
-    "ink": "^0.1.0"
-  }
+	"name": "ink-checkbox-list",
+	"version": "1.0.2",
+	"main": "lib/index.js",
+	"description": " Checkbox list component for ink.",
+	"repository": "ssh://git@github.com/MaxMEllon/ink-checkbox-list.git",
+	"author": "MaxMEllon <maxmellon1994@gmail.com>",
+	"license": "MIT",
+	"engines": {
+		"node": ">=6"
+	},
+	"files": [
+		"lib"
+	],
+	"keywords": [
+		"ink",
+		"text",
+		"input",
+		"component",
+		"jsx",
+		"react",
+		"stdin"
+	],
+	"scripts": {
+		"build": "babel src --out-dir lib",
+		"release": "npm run build && npm test && npm publish",
+		"test": "xo src/**/*.js"
+	},
+	"babel": {
+		"plugins": [
+			[
+				"transform-react-jsx",
+				{
+					"pragma": "h",
+					"useBuiltIns": true
+				}
+			],
+			"babel-plugin-array-includes"
+		]
+	},
+	"ava": {
+		"babel": {
+			"presets": [
+				"@ava/stage-4"
+			],
+			"plugins": [
+				[
+					"babel-plugin-array-includes",
+					"transform-react-jsx",
+					{
+						"pragma": "h",
+						"useBuiltIns": true
+					}
+				]
+			]
+		}
+	},
+	"xo": {
+		"extends": [
+			"xo-react"
+		],
+		"rules": {
+			"react/prop-types": 0,
+      "react/jsx-key": 0
+		},
+		"settings": {
+			"react": {
+				"pragma": "h"
+			}
+		}
+	},
+	"devDependencies": {
+		"ava": "^0.20.0",
+		"babel-cli": "^6.24.1",
+		"babel-plugin-array-includes": "^2.0.3",
+		"babel-plugin-transform-react-jsx": "^6.24.1",
+		"eslint-config-xo-react": "^0.13.0",
+		"eslint-plugin-react": "^7.1.0",
+		"ink": "^0.1.2",
+		"standard": "^10.0.2",
+		"xo": "^0.18.2"
+	},
+	"peerDependencies": {
+		"ink": "^0.1.0"
+	}
 }
