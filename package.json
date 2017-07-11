@@ -24,12 +24,13 @@
 	],
   "scripts": {
     "build": "babel src --out-dir lib",
-    "run": "yarn run build && node src/index.js"
+    "publish": "npm run build && npm run standard && npm publish",
+    "test": "standard src/**/*.js"
   },
   "babel": {
     "plugins": [
       [
-        "babel-plugin-array-inclues"
+        "babel-plugin-array-includes"
       ]
     ]
   },
