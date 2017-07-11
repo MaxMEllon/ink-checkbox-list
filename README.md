@@ -2,6 +2,11 @@
 
 > Checkbox list component for [ink](https://github.com/vadimdemedes/ink)
 
+Demo
+---
+
+![Demo Image](./.github/demo.gif)
+
 Install
 ---
 
