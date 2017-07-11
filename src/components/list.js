@@ -5,6 +5,10 @@ const stdin = process.stdin
 class List extends Component {
   constructor (props) {
     super(props)
+    this.props.children = this.props.children || []
+    this.props.checkedChar = this.props.checkedChar || '⦿'
+    this.props.nocheckedChar = this.props.nocheckedChar || '○'
+    this.props.cursorChar = this.props.cursorChar || '>'
     this.state = {
       cursor: 0,
       checked: []
@@ -46,9 +50,11 @@ class List extends Component {
   }
 
   deside () {
-    if (this.props.onDeside) this.props.onDeside()
     this.setState({ cursor: -1 })
-    stdin.removeListener('data', this.handleKeyEvent)
+    setTimeout(() => {
+      stdin.removeListener('data', this.handleKeyEvent)
+      if (this.props.onDeside) this.props.onDeside()
+    }, 50)
   }
 
   handleKeyEvent (key) {
@@ -83,27 +89,29 @@ class List extends Component {
   }
 
   renderCheckbox (index) {
+    const { checkedChar, nocheckedChar } = this.props
     const { checked } = this.state
     if (checked.includes(index)) {
-      return h(Text, { green: true }, ' ⦿ ')
+      return h(Text, { green: true }, ` ${checkedChar}  `)
     } else {
-      return h(Text, { green: true }, ' ○ ')
+      return h(Text, { green: true }, ` ${nocheckedChar}  `)
     }
   }
 
   render (props) {
     const { cursor } = this.state
+    const { cursorChar } = props
     return (
       h('div', {},
         props.children.map((co, i) => (
           cursor === i
           ? h('div', {}, [
-            h('span', {}, '> '),
+            h('span', {}, `${cursorChar} `),
             this.renderCheckbox(i),
             co
           ])
           : h('div', {}, [
-            h('span', {}, '  '),
+            h('span', {}, ' '.repeat(cursorChar.length + 1)),
             this.renderCheckbox(i),
             co
           ])
