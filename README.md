@@ -15,6 +15,16 @@ Install
 $ npm install ink readline ink-checkbox-list
 ```
 
+KeyBind
+---
+
+| key | action |
+|---|---|
+| `<Space>` | toggle check/uncheck |
+| `<Enter>` | deside item list |
+| `<Up>` | move to up a cursor |
+| `<Down>` | move to down a cursor |
+
 Usage
 ---
 
