@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@types/node": "^8.0.10",
+    "standard": "^10.0.2",
     "typescript": "^2.4.1"
   },
   "dependencies": {
