@@ -13,31 +13,32 @@ class List extends Component {
       cursor: 0,
       checked: []
     }
-    readline.emitKeypressEvents(process.stdin)
-    stdin.setRawMode(true)
     stdin.resume()
     stdin.setEncoding('utf8')
     this.handleKeyEvent = this.handleKeyEvent.bind(this)
   }
 
-  getCheckedItem () {
-    return this.state.checked
-  }
-
   moveUp () {
     const { cursor } = this.state
-    if (cursor - 1 < 0) return
+    const { length } = this.props.children
+    if (cursor - 1 < 0) {
+      this.setState({ cursor: length - 1 })
+      return
+    }
     this.setState({ cursor: cursor - 1 })
   }
 
   moveDown () {
     const { cursor } = this.state
     const { length } = this.props.children
-    if (cursor + 1 >= length) return
+    if (cursor + 1 >= length) {
+      this.setState({ cursor: 0 })
+      return
+    }
     this.setState({ cursor: cursor + 1 })
   }
 
-  toggleCurrentCursol () {
+  toggleCurrentCursor () {
     const { checked, cursor } = this.state
     if (checked.includes(cursor)) {
       const i = checked.indexOf(cursor)
@@ -49,11 +50,11 @@ class List extends Component {
     }
   }
 
-  deside () {
+  submit () {
     this.setState({ cursor: -1 })
     setTimeout(() => {
       stdin.removeListener('data', this.handleKeyEvent)
-      if (this.props.onDeside) this.props.onDeside()
+      if (this.props.onSubmit) this.props.onSubmit(this.state.checked)
     }, 50)
   }
 
@@ -70,11 +71,11 @@ class List extends Component {
       case '\u001b\u005b\u0043':
       case '\u001b\u005b\u0044':
       case '\u0020': case '\ucaa0': {
-        this.toggleCurrentCursol()
+        this.toggleCurrentCursor()
         break
       }
       case '\u000d': {
-        this.deside()
+        this.submit()
         break
       }
     }

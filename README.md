@@ -1,6 +1,6 @@
-# ink-checkbox-list
+# Ink-checkbox-list
 
-> Checkbox list component for [ink](https://github.com/vadimdemedes/ink)
+> Checkbox list component for [Ink](https://github.com/vadimdemedes/ink)
 
 Demo
 ---
@@ -12,10 +12,10 @@ Install
 ---
 
 ```
-$ npm install ink readline ink-checkbox-list
+$ npm install ink ink-checkbox-list
 ```
 
-KeyBind
+Key bindings
 ---
 
 | key | action |
@@ -75,24 +75,35 @@ const unmount = mount(
 );
 ```
 
-Props
----
+**Note**:
 
-#### List
+Use this snippet to enable `keypress` events:
 
-**checkedChar**
+```js
+const readline = require('readline');
 
-Type: `String` <br />
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
+```
+
+## Props
+
+### checkedChar
+
+Type: `string`
+
 Default: `⦿`
 
-**checkedChar**
+### nocheckedChar
 
-Type: `String` <br />
+Type: `string`
+
 Default: `○`
 
-**cursorChar**
+### cursorChar
 
-Type: `String` <br />
+Type: `string`
+
 Default: `>`
 
 LICENSE

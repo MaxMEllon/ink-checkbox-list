@@ -37,10 +37,10 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-plugin-array-includes": "^2.0.3",
+    "ink": "^0.1.2",
     "standard": "^10.0.2"
   },
-  "dependencies": {
-    "ink": "^0.1.2",
-    "readline": "^1.3.0"
+  "peerDependencies": {
+    "ink": "^0.1.0"
   }
 }

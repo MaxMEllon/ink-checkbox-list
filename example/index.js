@@ -6,8 +6,8 @@ let component
 const unmount = mount(
   h(List, {
     ref: (co) => (component = co),
-    onDeside: () => {
-      console.log(component.getCheckedItem())
+    onSubmit: (list) => {
+      console.log(list)
       process.exit(0)
     }
   }, [
