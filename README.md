@@ -11,7 +11,7 @@ Install
 ---
 
 ```
-$ npm install ink-checkbox-list
+$ npm install ink readline ink-checkbox-list
 ```
 
 Usage
