@@ -2,17 +2,41 @@
   "name": "ink-select",
   "version": "1.0.0",
   "main": "index.js",
+  "description": " Checkbox list component for ink.",
   "repository": "ssh://git@github.com/MaxMEllon/ink-select.git",
   "author": "MaxMEllon <maxmellon1994@gmail.com>",
   "license": "MIT",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "lib"
+  ],
+	"keywords": [
+		"ink",
+		"text",
+		"input",
+		"component",
+		"jsx",
+		"react",
+		"stdin"
+	],
   "scripts": {
-    "build": "tsc --target es2015 --module commonjs src/index.ts",
+    "build": "babel src --out-dir lib",
     "run": "yarn run build && node src/index.js"
   },
+  "babel": {
+    "plugins": [
+      [
+        "babel-plugin-array-inclues"
+      ]
+    ]
+  },
   "devDependencies": {
-    "@types/node": "^8.0.10",
-    "standard": "^10.0.2",
-    "typescript": "^2.4.1"
+    "babel-cli": "^6.24.1",
+    "babel-plugin-array-includes": "^2.0.3",
+    "standard": "^10.0.2"
   },
   "dependencies": {
     "ink": "^0.1.2",
