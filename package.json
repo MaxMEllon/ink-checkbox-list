@@ -1,30 +1,29 @@
 {
   "name": "ink-checkbox-list",
   "version": "1.0.2",
-  "main": "index.js",
+  "main": "lib/index.js",
   "description": " Checkbox list component for ink.",
   "repository": "ssh://git@github.com/MaxMEllon/ink-checkbox-list.git",
   "author": "MaxMEllon <maxmellon1994@gmail.com>",
   "license": "MIT",
-  "main": "lib/index.js",
   "engines": {
     "node": ">=6"
   },
   "files": [
     "lib"
   ],
-	"keywords": [
-		"ink",
-		"text",
-		"input",
-		"component",
-		"jsx",
-		"react",
-		"stdin"
-	],
+  "keywords": [
+    "ink",
+    "text",
+    "input",
+    "component",
+    "jsx",
+    "react",
+    "stdin"
+  ],
   "scripts": {
     "build": "babel src --out-dir lib",
-    "prepublish": "npm run build && npm test",
+    "release": "npm run build && npm test && npm publish",
     "test": "standard src/**/*.js"
   },
   "babel": {
@@ -35,6 +34,7 @@
     ]
   },
   "devDependencies": {
+    "ava": "^0.20.0",
     "babel-cli": "^6.24.1",
     "babel-plugin-array-includes": "^2.0.3",
     "ink": "^0.1.2",
