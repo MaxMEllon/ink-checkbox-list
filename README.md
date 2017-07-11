@@ -1,4 +1,4 @@
-# Ink-checkbox-list
+# Ink-checkbox-list [![Build Status](https://travis-ci.org/MaxMEllon/ink-checkbox-list.svg?branch=master)](https://travis-ci.org/MaxMEllon/ink-checkbox-list)
 
 > Checkbox list component for [Ink](https://github.com/vadimdemedes/ink)
 
