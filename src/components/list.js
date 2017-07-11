@@ -16,6 +16,10 @@ class List extends Component {
     this.handleKeyEvent = this.handleKeyEvent.bind(this)
   }
 
+  getCheckedItem () {
+    return this.state.checked
+  }
+
   moveUp () {
     const { cursor } = this.state
     if (cursor - 1 < 0) return
@@ -41,6 +45,12 @@ class List extends Component {
     }
   }
 
+  deside () {
+    if (this.props.onDeside) this.props.onDeside()
+    this.setState({ cursor: -1 })
+    stdin.removeListener('data', this.handleKeyEvent)
+  }
+
   handleKeyEvent (key) {
     switch (key) {
       case '\u001b\u005b\u0041': {
@@ -53,12 +63,13 @@ class List extends Component {
       }
       case '\u001b\u005b\u0043':
       case '\u001b\u005b\u0044':
-      case '\u0020': case '\ucaa0': case '\u000d': {
+      case '\u0020': case '\ucaa0': {
         this.toggleCurrentCursol()
         break
       }
-      case '\u0003': {
-        process.exit(0)
+      case '\u000d': {
+        this.deside()
+        break
       }
     }
   }
