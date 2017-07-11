@@ -1,6 +1,6 @@
 {
-  "name": "ink-select",
-  "version": "1.0.0",
+  "name": "ink-checkbox-list",
+  "version": "1.0.2",
   "main": "index.js",
   "description": " Checkbox list component for ink.",
   "repository": "ssh://git@github.com/MaxMEllon/ink-select.git",
@@ -24,7 +24,7 @@
 	],
   "scripts": {
     "build": "babel src --out-dir lib",
-    "publish": "npm run build && npm run standard && npm publish",
+    "prepublish": "npm run build && npm test",
     "test": "standard src/**/*.js"
   },
   "babel": {
