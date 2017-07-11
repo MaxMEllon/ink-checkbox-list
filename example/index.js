@@ -1,5 +1,9 @@
 const { h, mount } = require('ink')
 const { List, ListItem } = require('../src')
+const readline = require('readline');
+
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
 
 let component
 

@@ -1,14 +1,13 @@
 const { h, Text, Component } = require('ink')
-const readline = require('readline')
 const stdin = process.stdin
 
 class List extends Component {
   constructor (props) {
     super(props)
     this.props.children = this.props.children || []
-    this.props.checkedChar = this.props.checkedChar || '⦿'
-    this.props.nocheckedChar = this.props.nocheckedChar || '○'
-    this.props.cursorChar = this.props.cursorChar || '>'
+    this.props.checkedCharacter = this.props.checkedCharacter || '⦿'
+    this.props.nocheckedCharacter = this.props.nocheckedCharacter || '○'
+    this.props.cursorCharacter = this.props.cursorCharacter || '>'
     this.state = {
       cursor: 0,
       checked: []
@@ -85,34 +84,38 @@ class List extends Component {
     stdin.on('data', this.handleKeyEvent)
   }
 
+  componentDidUpdate () {
+    if (this.props.onChange) this.props.onChange(this.state.checked)
+  }
+
   componentWillUnMount () {
     stdin.removeListener('data', this.handleKeyEvent)
   }
 
   renderCheckbox (index) {
-    const { checkedChar, nocheckedChar } = this.props
+    const { checkedCharacter, nocheckedCharacter } = this.props
     const { checked } = this.state
     if (checked.includes(index)) {
-      return h(Text, { green: true }, ` ${checkedChar}  `)
+      return h(Text, { green: true }, ` ${checkedCharacter}  `)
     } else {
-      return h(Text, { green: true }, ` ${nocheckedChar}  `)
+      return h(Text, { green: true }, ` ${nocheckedCharacter}  `)
     }
   }
 
   render (props) {
     const { cursor } = this.state
-    const { cursorChar } = props
+    const { cursorCharacter } = props
     return (
       h('div', {},
         props.children.map((co, i) => (
           cursor === i
           ? h('div', {}, [
-            h('span', {}, `${cursorChar} `),
+            h('span', {}, `${cursorCharacter} `),
             this.renderCheckbox(i),
             co
           ])
           : h('div', {}, [
-            h('span', {}, ' '.repeat(cursorChar.length + 1)),
+            h('span', {}, ' '.repeat(cursorCharacter.length + 1)),
             this.renderCheckbox(i),
             co
           ])
