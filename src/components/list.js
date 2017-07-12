@@ -12,15 +12,19 @@ class List extends Component {
 			cursor: 0,
 			checked: []
 		};
-		this.handleKeyEvent = this.handleKeyEvent.bind(this);
+		this.handleKeyPress = this.handleKeyPress.bind(this);
+	}
+
+	get cursor() {
+		return this.state.cursor;
 	}
 
 	componentDidMount() {
-		stdin.on('keypress', this.handleKeyEvent);
+		stdin.on('keypress', this.handleKeyPress);
 	}
 
 	componentWillUnMount() {
-		stdin.removeListener('keypress', this.handleKeyEvent);
+		stdin.removeListener('keypress', this.handleKeyPress);
 	}
 
 	moveUp() {
@@ -57,15 +61,13 @@ class List extends Component {
 
 	submit() {
 		this.setState({cursor: -1});
-		setTimeout(() => {
-			stdin.removeListener('keypress', this.handleKeyEvent);
-			if (this.props.onSubmit) {
-				this.props.onSubmit(this.state.checked);
-			}
-		}, 50);
+		stdin.removeListener('keypress', this.handleKeyPress);
+		if (this.props.onSubmit) {
+			this.props.onSubmit(this.state.checked);
+		}
 	}
 
-	handleKeyEvent(ch, key) {
+	handleKeyPress(ch, key) {
 		const pressedKey = key.name;
 		switch (pressedKey) {
 			case 'up': {
