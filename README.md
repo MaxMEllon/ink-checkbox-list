@@ -5,8 +5,7 @@
 Demo
 ---
 
-![Demo Image 1](./.github/demo1.gif)
-![Demo Image 2](./.github/demo2.gif)
+![Demo Image](./.github/demo.gif)
 
 Install
 ---
