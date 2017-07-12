@@ -20,7 +20,7 @@ Key bindings
 | key | action |
 |---|---|
 | `<Space>` | toggle check/uncheck |
-| `<Enter>` | deside item list |
+| `<Enter>` | submit item list |
 | `<Up>` | move to up a cursor |
 | `<Down>` | move to down a cursor |
 
@@ -91,19 +91,37 @@ process.stdin.setRawMode(true);
 
 Type: `string`
 
-Default: `⦿`
+Default: `☒`
+
+This character is used checked component.
 
 ### nocheckedChar
 
 Type: `string`
 
-Default: `○`
+Default: `☐`
+
+This character is used unchecked component.
 
 ### cursorChar
 
 Type: `string`
 
-Default: `>`
+Default: `❯`
+
+This character is used current cursor line.
+
+### onChange
+
+Type: `Function`
+
+Function to call when user `check`. (<kbd>Space</kbd>)
+
+### onSubmit
+
+Type: `Function`
+
+Function to call when user `submit`. (<kbd>Enter</kbd>)
 
 LICENSE
 ---
