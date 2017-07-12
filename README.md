@@ -28,33 +28,8 @@ Usage
 ---
 
 ```js
-const { h, mount } = require('ink')
-const { List, ListItem } = require('ink-checkbox-list')
-
-let component
-
-const unmount = mount(
-  h(List, {
-    ref: (co) => (component = co),
-    onDeside: () => {
-      console.log(component.getCheckedItem())
-      process.exit(0)
-    }
-  }, [
-    h(ListItem, {}, 'aaaa'),
-    h(ListItem, {}, 'aaaa'),
-    h(ListItem, {}, 'aaaa'),
-    h(ListItem, {}, 'aaaa'),
-    h(ListItem, {}, 'aaaa')
-  ])
-);
-```
-
-> when using jsx
-
-```js
-const { h, mount } = require('ink')
-const { List, ListItem } = require('ink-checkbox-list')
+const {h, mount} = require('ink');
+const {List, ListItem} = require('ink-checkbox-list');
 
 let component
 
