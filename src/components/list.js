@@ -1,35 +1,25 @@
-const {h, Text, Component} = require('ink');
+const {h, Component} = require('ink');
+const CheckBox = require('./check-box');
+const Cursor = require('./cursor');
 
 const stdin = process.stdin;
 
 class List extends Component {
 	constructor(props) {
 		super(props);
-		this.props.children = this.props.children || [];
-		this.props.checkedCharacter = this.props.checkedCharacter || '⦿';
-		this.props.nocheckedCharacter = this.props.nocheckedCharacter || '○';
-		this.props.cursorCharacter = this.props.cursorCharacter || '>';
 		this.state = {
 			cursor: 0,
 			checked: []
 		};
-		stdin.resume();
-		stdin.setEncoding('utf8');
 		this.handleKeyEvent = this.handleKeyEvent.bind(this);
 	}
 
 	componentDidMount() {
-		stdin.on('data', this.handleKeyEvent);
-	}
-
-	componentDidUpdate() {
-		if (this.props.onChange) {
-			this.props.onChange(this.state.checked);
-		}
+		stdin.on('keypress', this.handleKeyEvent);
 	}
 
 	componentWillUnMount() {
-		stdin.removeListener('data', this.handleKeyEvent);
+		stdin.removeListener('keypress', this.handleKeyEvent);
 	}
 
 	moveUp() {
@@ -67,30 +57,32 @@ class List extends Component {
 	submit() {
 		this.setState({cursor: -1});
 		setTimeout(() => {
-			stdin.removeListener('data', this.handleKeyEvent);
+			stdin.removeListener('keypress', this.handleKeyEvent);
 			if (this.props.onSubmit) {
 				this.props.onSubmit(this.state.checked);
 			}
 		}, 50);
 	}
 
-	handleKeyEvent(key) {
-		switch (key) {
-			case '\u001b\u005b\u0041': {
+	handleKeyEvent(ch, key) {
+		const pressedKey = key.name;
+		switch (pressedKey) {
+			case 'up': {
 				this.moveUp();
 				break;
 			}
-			case '\u001b\u005b\u0042': {
+			case 'down': {
 				this.moveDown();
 				break;
 			}
-			case '\u001b\u005b\u0043':
-			case '\u001b\u005b\u0044':
-			case '\u0020': case '\ucaa0': {
+			case 'left': case 'right': case 'space': {
 				this.toggleCurrentCursor();
+				if (this.props.onChange) {
+					this.props.onChange(this.state.checked);
+				}
 				break;
 			}
-			case '\u000d': {
+			case 'return': {
 				this.submit();
 				break;
 			}
@@ -101,39 +93,27 @@ class List extends Component {
 		}
 	}
 
-	renderCheckbox(index) {
-		const {checkedCharacter, nocheckedCharacter} = this.props;
-		const {checked} = this.state;
-		const mark = checked.includes(index) ?
-			checkedCharacter :
-			nocheckedCharacter;
-		return <Text green>{` ${mark}  `}</Text>;
-	}
-
 	render(props) {
 		const {cursor} = this.state;
-		const {cursorCharacter} = props;
+		const {cursorCharacter, checkedCharacter, uncheckedCharacter} = props;
 		return (
 			<div>
 				{
-					props.children.map((co, i) => {
-						if (cursor === i) {
-							return (
-								<div>
-									<span>{`${cursorCharacter}`} </span>
-									{this.renderCheckbox(i)}
-									{co}
-								</div>
-							);
-						}
-						return (
-							<div>
-								<span>{' '.repeat(cursorCharacter.length + 1)} </span>
-								{this.renderCheckbox(i)}
-								{co}
-							</div>
-						);
-					})
+					props.children.map((co, i) => (
+						<div>
+							<Cursor
+								isActive={cursor === i}
+								cursorCharacter={cursorCharacter || '>'}
+							/>
+							<CheckBox
+								index={i}
+								checked={this.state.checked}
+								checkedCharacter={checkedCharacter || '⦿'}
+								uncheckedCharacter={uncheckedCharacter || '○'}
+							/>
+							{co}
+						</div>
+					))
 				}
 			</div>
 		);

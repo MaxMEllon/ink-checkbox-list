@@ -24,7 +24,7 @@
 	"scripts": {
 		"build": "babel src --out-dir lib",
 		"release": "npm run build && npm test && npm publish",
-		"test": "xo src/**/*.js && ava"
+		"test": "xo && ava"
 	},
 	"babel": {
 		"plugins": [
@@ -61,8 +61,11 @@
 		],
 		"rules": {
 			"react/prop-types": 0,
-      "react/jsx-key": 0
+			"react/jsx-key": 0
 		},
+		"ignores": [
+			"example/*.js"
+		],
 		"settings": {
 			"react": {
 				"pragma": "h"
@@ -82,5 +85,6 @@
 	},
 	"peerDependencies": {
 		"ink": "^0.1.0"
-	}
+	},
+	"dependencies": {}
 }

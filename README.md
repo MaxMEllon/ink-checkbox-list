@@ -12,7 +12,7 @@ Install
 ---
 
 ```
-$ npm install ink ink-checkbox-list
+$ npm install ink-checkbox-list
 ```
 
 Key bindings

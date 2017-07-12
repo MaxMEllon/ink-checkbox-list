@@ -1,9 +1,11 @@
 const {h, mount} = require('ink');
-const {List, ListItem} = require('../src');
+const {List, ListItem} = require('../lib');
 const readline = require('readline');
 
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
 
 let component;
 
