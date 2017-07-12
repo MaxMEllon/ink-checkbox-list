@@ -5,7 +5,7 @@ class ListItem extends Component {
 		return (
 			<div>
 				<div>{props.children}</div>
-				<br />
+				<br/>
 			</div>
 		);
 	}

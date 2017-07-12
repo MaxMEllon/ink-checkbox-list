@@ -24,7 +24,7 @@
 	"scripts": {
 		"build": "babel src --out-dir lib",
 		"release": "npm run build && npm test && npm publish",
-		"test": "xo src/**/*.js"
+		"test": "xo src/**/*.js && ava"
 	},
 	"babel": {
 		"plugins": [
