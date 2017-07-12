@@ -19,10 +19,10 @@ Key bindings
 
 | key | action |
 |---|---|
-| `<Space>` | toggle check/uncheck |
-| `<Enter>` | submit item list |
-| `<Up>` | move to up a cursor |
-| `<Down>` | move to down a cursor |
+| <kbd>Space</kbd>| toggle check/uncheck |
+| <kbd>Enter</kbd>| submit item list |
+| <kbd>↑</kbd>| move to up a cursor |
+| <kbd>↓</kbd>| move to down a cursor |
 
 Usage
 ---
