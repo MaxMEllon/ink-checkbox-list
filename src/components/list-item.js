@@ -1,14 +1,12 @@
-const {h, Component} = require('ink');
+const {h} = require('ink');
 
-class ListItem extends Component {
-	render(props) {
-		return (
-			<div>
-				<div>{props.children}</div>
-				<br/>
-			</div>
-		);
-	}
+function ListItem({children}) {
+	return (
+		<div>
+			<div>{children}</div>
+			<br/>
+		</div>
+	);
 }
 
 module.exports = ListItem;
