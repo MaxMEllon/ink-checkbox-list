@@ -1,9 +1,7 @@
 const {h, Text} = require('ink');
 
-function CheckBox({checkedCharacter, uncheckedCharacter, checked, index}) {
-	const mark = checked.includes(index) ?
-		checkedCharacter :
-		uncheckedCharacter;
+function CheckBox({checkedCharacter, uncheckedCharacter, isChecked}) {
+	const mark = isChecked === true ? checkedCharacter : uncheckedCharacter;
 	return (
 		<Text green>{` ${mark}  `}</Text>
 	);

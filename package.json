@@ -87,5 +87,7 @@
 	"peerDependencies": {
 		"ink": "^0.1.0"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"figures": "^2.0.0"
+	}
 }

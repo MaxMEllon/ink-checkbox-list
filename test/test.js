@@ -6,6 +6,8 @@ import {
 	Text
 } from 'ink';
 import {List, ListItem} from '../lib/index';
+import Cursor from '../lib/components/cursor';
+import CheckBox from '../lib/components/check-box';
 
 const render = tree => renderToString(build(tree));
 
@@ -23,4 +25,38 @@ test('render simple case', t => {
 
 test('render rich child component', t => {
 	t.is(render(<ListItem><Text>s</Text></ListItem>), 's\n');
+});
+
+test('checkbox', t => {
+	t.is(render(
+		<CheckBox
+			checkedCharacter="[x]"
+			uncheckedCharacter="[ ]"
+			isChecked={false}
+		/>
+	), render(<Text green>{` [ ]  `}</Text>));
+
+	t.is(render(
+		<CheckBox
+			checkedCharacter="[x]"
+			uncheckedCharacter="[ ]"
+			isChecked
+		/>
+	), render(<Text green>{` [x]  `}</Text>));
+});
+
+test('cursor', t => {
+	t.is(render(
+		<Cursor
+			cursorCharacter="--->"
+			isActive
+		/>
+	), '---> ');
+
+	t.is(render(
+		<Cursor
+			cursorCharacter="--->"
+			isActive={false}
+		/>
+	), '     ');
 });

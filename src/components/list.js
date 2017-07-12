@@ -1,4 +1,5 @@
 const {h, Component} = require('ink');
+const figures = require('figures');
 const CheckBox = require('./check-box');
 const Cursor = require('./cursor');
 
@@ -103,13 +104,12 @@ class List extends Component {
 						<div>
 							<Cursor
 								isActive={cursor === i}
-								cursorCharacter={cursorCharacter || '>'}
+								cursorCharacter={cursorCharacter || figures.pointer}
 							/>
 							<CheckBox
-								index={i}
-								checked={this.state.checked}
-								checkedCharacter={checkedCharacter || '⦿'}
-								uncheckedCharacter={uncheckedCharacter || '○'}
+								isChecked={this.state.checked.includes(i)}
+								checkedCharacter={checkedCharacter || figures.checkboxOn}
+								uncheckedCharacter={uncheckedCharacter || figures.checkboxOff}
 							/>
 							{co}
 						</div>
