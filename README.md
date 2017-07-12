@@ -36,8 +36,8 @@ let component
 const unmount = mount(
   <List
     ref={co => component}
-    onDeside: () => {
-      console.log(component.getCheckedItem())
+    onDeside: (items) => {
+      console.log(items)
       process.exit(0)
     }
   >
