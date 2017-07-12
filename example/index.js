@@ -7,22 +7,18 @@ process.stdin.setRawMode(true);
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
-let component;
-
 const unmount = mount(
-  h(List, {
-	ref: co => (component = co),
-	onSubmit: list => {
-		console.log(list);
+  <List
+    onSubmit={list => {
+      console.log(list)
 		process.exit(0);
-	}
-}, [
-	h(ListItem, {}, 'aaaa'),
-	h(ListItem, {}, 'aaaa'),
-	h(ListItem, {}, 'aaaa'),
-	h(ListItem, {}, 'aaaa'),
-	h(ListItem, {}, 'aaaa')
-])
+    }}
+  >
+    <ListItem>aaaa</ListIte>
+    <ListItem>aaaa</ListIte>
+    <ListItem>aaaa</ListIte>
+    <ListItem>aaaa</ListIte>
+  </List>
 );
 
 setTimeout(() => {
