@@ -1,6 +1,6 @@
 {
 	"name": "ink-checkbox-list",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"main": "lib/index.js",
 	"description": " Checkbox list component for ink.",
 	"repository": "ssh://git@github.com/MaxMEllon/ink-checkbox-list.git",
