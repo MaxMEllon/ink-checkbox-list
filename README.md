@@ -31,22 +31,21 @@ Usage
 const {h, mount} = require('ink');
 const {List, ListItem} = require('ink-checkbox-list');
 
-let component
-
 const unmount = mount(
-  <List
-    ref={co => component}
-    onDeside: (items) => {
-      console.log(items)
-      process.exit(0)
-    }
-  >
-    <ListItem>aaaa</ListItem>
-    <ListItem>aaaa</ListItem>
-    <ListItem>aaaa</ListItem>
-    <ListItem>aaaa</ListItem>
-  </List>
+	<List
+		onSubmit={(list) => {
+			console.log(list)
+			process.exit(0);
+		}}
+	>
+		<ListItem>aaaa</ListItem>
+	</List>
 );
+
+setTimeout(() => {
+	unmount();
+	process.exit(1);
+}, 10000);
 ```
 
 **Note**:

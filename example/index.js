@@ -8,17 +8,14 @@ process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
 const unmount = mount(
-  <List
-    onSubmit={list => {
-      console.log(list)
-		process.exit(0);
-    }}
-  >
-    <ListItem>aaaa</ListIte>
-    <ListItem>aaaa</ListIte>
-    <ListItem>aaaa</ListIte>
-    <ListItem>aaaa</ListIte>
-  </List>
+	<List
+		onSubmit={(list) => {
+			console.log(list)
+			process.exit(0);
+		}}
+	>
+		<ListItem>aaaa</ListItem>
+	</List>
 );
 
 setTimeout(() => {
