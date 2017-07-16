@@ -63,7 +63,8 @@ class List extends Component {
 		this.setState({cursor: -1});
 		stdin.removeListener('keypress', this.handleKeyPress);
 		if (this.props.onSubmit) {
-			this.props.onSubmit(this.state.checked);
+			this.props.onChange(this.state.checked);
+			this.props.onSubmit(values);
 		}
 	}
 
@@ -78,7 +79,7 @@ class List extends Component {
 				this.moveDown();
 				break;
 			}
-			case 'left': case 'right': case 'space': {
+			case 'space': {
 				this.toggleCurrentCursor();
 				if (this.props.onChange) {
 					this.props.onChange(this.state.checked);
@@ -106,14 +107,15 @@ class List extends Component {
 						<div>
 							<Cursor
 								isActive={cursor === i}
-								cursorCharacter={cursorCharacter || figures.pointer}
+								cursorCharacter={cursorCharacter}
 							/>
 							<CheckBox
 								isChecked={this.state.checked.includes(i)}
-								checkedCharacter={checkedCharacter || figures.checkboxOn}
-								uncheckedCharacter={uncheckedCharacter || figures.checkboxOff}
+								checkedCharacter={checkedCharacter}
+								uncheckedCharacter={uncheckedCharacter}
 							/>
 							{co}
+							<br/>
 						</div>
 					))
 				}
@@ -121,5 +123,11 @@ class List extends Component {
 		);
 	}
 }
+
+List.defaultProps = {
+	cursorCharacter: figures.pointer,
+	checkedCharacter: figures.checkboxOn,
+	uncheckedCharacter: figures.checkboxOff
+};
 
 module.exports = List;
