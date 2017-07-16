@@ -4,10 +4,9 @@ const {string} = require('prop-types');
 /* eslint no-unused-vars: [0] */
 function ListItem({value, children}) {
 	return (
-		<div>
+		<span>
 			<div>{children}</div>
-			<br/>
-		</div>
+		</span>
 	);
 }
 

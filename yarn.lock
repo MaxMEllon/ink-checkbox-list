@@ -1999,9 +1999,9 @@ ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
-ink@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/ink/-/ink-0.2.1.tgz#dabf43e4a54431f955baaef49ab178ebdc334bb0"
+ink@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ink/-/ink-0.3.0.tgz#f6c0f611dba64494a99d2e10a85ae6433fd7ac1d"
   dependencies:
     arrify "^1.0.1"
     chalk "^2.0.1"

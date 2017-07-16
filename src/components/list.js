@@ -107,10 +107,10 @@ class List extends Component {
 		const {cursor} = this.state;
 		const {cursorCharacter, checkedCharacter, uncheckedCharacter} = props;
 		return (
-			<div>
+			<span>
 				{
 					props.children.map((co, i) => (
-						<div>
+						<span>
 							<Cursor
 								isActive={cursor === i}
 								cursorCharacter={cursorCharacter}
@@ -121,10 +121,10 @@ class List extends Component {
 								uncheckedCharacter={uncheckedCharacter}
 							/>
 							{co}
-						</div>
+						</span>
 					))
 				}
-			</div>
+			</span>
 		);
 	}
 }
