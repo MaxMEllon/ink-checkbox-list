@@ -18,17 +18,20 @@ Usage
 ---
 
 ```js
-const {h, mount} = require('ink');
+const {h, render} = require('ink');
 const {List, ListItem} = require('ink-checkbox-list');
 
-const unmount = mount(
+render(
 	<List
 		onSubmit={(list) => {
 			console.log(list)
 			process.exit(0);
 		}}
 	>
-		<ListItem>aaaa</ListItem>
+		<ListItem>option1</ListItem>
+		<ListItem>option2</ListItem>
+		<ListItem>option3</ListItem>
+		<ListItem>option4</ListItem>
 	</List>
 );
 ```
