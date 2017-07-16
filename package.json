@@ -62,7 +62,9 @@
 		],
 		"rules": {
 			"react/prop-types": 0,
-			"react/jsx-key": 0
+			"react/jsx-key": 0,
+			"react/no-unused-prop-types": 0,
+			"react/require-default-props": 0
 		},
 		"ignores": [
 			"example/*.js"
@@ -89,6 +91,7 @@
 		"ink": "^0.1.0"
 	},
 	"dependencies": {
-		"figures": "^2.0.0"
+		"figures": "^2.0.0",
+		"prop-types": "^15.5.10"
 	}
 }

@@ -28,10 +28,10 @@ render(
 			process.exit(0);
 		}}
 	>
-		<ListItem>option1</ListItem>
-		<ListItem>option2</ListItem>
-		<ListItem>option3</ListItem>
-		<ListItem>option4</ListItem>
+		<ListItem value="1">option1</ListItem>
+		<ListItem value="2">option2</ListItem>
+		<ListItem value="3">option3</ListItem>
+		<ListItem value="4">option4</ListItem>
 	</List>
 );
 ```
@@ -49,38 +49,50 @@ process.stdin.setRawMode(true);
 
 ## Props
 
-### checkedChar
+### List
+
+#### checkedChar
 
 Type: `string`
 Default: `☒`
 
 This character is used checked component.
 
-### uncheckedChar
+#### uncheckedChar
 
 Type: `string`
 Default: `☐`
 
 This character is used unchecked component.
 
-### cursorChar
+#### cursorChar
 
 Type: `string`
 Default: `❯`
 
 This character is used current cursor line.
 
-### onChange
+#### onChange
 
 Type: `Function`
 
-Function to call when user `check`. (<kbd>Space</kbd>)
+Function to call when user pressed <kbd>Space</kbd>.
 
-### onSubmit
+#### onSubmit
 
 Type: `Function`
 
-Function to call when user `submit`. (<kbd>Enter</kbd>)
+Function to call when user pressed <kbd>Enter</kbd>.
+
+### ListItem
+
+#### value
+
+Type: `string`
+**Required**
+
+`onChange()`/`onSubmit()` is used this props.
+Callback function return `value` list.
 
 Key bindings
 ---
