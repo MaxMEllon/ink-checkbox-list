@@ -76,13 +76,13 @@ This character is used current cursor line.
 
 Type: `Function`
 
-Function to call when user pressed <kbd>Space</kbd>.
+Function to call when you pressed <kbd>Space</kbd> key.
 
 #### onSubmit
 
 Type: `Function`
 
-Function to call when user pressed <kbd>Enter</kbd>.
+Function to call when you pressed <kbd>Enter</kbd> key.
 
 ### ListItem
 
