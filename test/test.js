@@ -14,15 +14,15 @@ test('no item', t => {
 });
 
 test('blank child in list item', t => {
-	t.is(renderToString(<ListItem/>), '\n');
+	t.is(renderToString(<ListItem value="test"/>), '\n');
 });
 
 test('renderToString simple case', t => {
-	t.is(renderToString(<ListItem>sample</ListItem>), 'sample\n');
+	t.is(renderToString(<ListItem value="test">sample</ListItem>), 'sample\n');
 });
 
 test('renderToString rich child component', t => {
-	t.is(renderToString(<ListItem><Text>s</Text></ListItem>), 's\n');
+	t.is(renderToString(<ListItem value="test"><Text>s</Text></ListItem>), 's\n');
 });
 
 test('checkbox', t => {
