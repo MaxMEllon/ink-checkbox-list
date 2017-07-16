@@ -1,6 +1,8 @@
 const {h} = require('ink');
+const {string} = require('prop-types');
 
-function ListItem({children}) {
+/* eslint no-unused-vars: [0] */
+function ListItem({value, children}) {
 	return (
 		<div>
 			<div>{children}</div>
@@ -8,5 +10,9 @@ function ListItem({children}) {
 		</div>
 	);
 }
+
+ListItem.propTypes = {
+	value: string.isRequired
+};
 
 module.exports = ListItem;

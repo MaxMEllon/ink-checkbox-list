@@ -1,5 +1,6 @@
 const {h, Component} = require('ink');
 const figures = require('figures');
+const PropTypes = require('prop-types');
 const CheckBox = require('./check-box');
 const Cursor = require('./cursor');
 
@@ -17,6 +18,12 @@ class List extends Component {
 
 	get cursor() {
 		return this.state.cursor;
+	}
+
+	get childValues() {
+		const {children} = this.props;
+		const filteredChildren = children.filter((_, i) => this.state.checked.includes(i));
+		return filteredChildren.map(child => child.props.value);
 	}
 
 	componentDidMount() {
@@ -63,7 +70,7 @@ class List extends Component {
 		this.setState({cursor: -1});
 		stdin.removeListener('keypress', this.handleKeyPress);
 		if (this.props.onSubmit) {
-			this.props.onSubmit(this.state.checked);
+			this.props.onSubmit(this.childValues);
 		}
 	}
 
@@ -81,7 +88,7 @@ class List extends Component {
 			case 'space': {
 				this.toggleCurrentCursor();
 				if (this.props.onChange) {
-					this.props.onChange(this.state.checked);
+					this.props.onChange(this.childValues);
 				}
 				break;
 			}
@@ -114,7 +121,6 @@ class List extends Component {
 								uncheckedCharacter={uncheckedCharacter}
 							/>
 							{co}
-							<br/>
 						</div>
 					))
 				}
@@ -127,6 +133,14 @@ List.defaultProps = {
 	cursorCharacter: figures.pointer,
 	checkedCharacter: figures.checkboxOn,
 	uncheckedCharacter: figures.checkboxOff
+};
+
+List.propTypes = {
+	cursorCharacter: PropTypes.string,
+	checkedCharacter: PropTypes.string,
+	uncheckedCharacter: PropTypes.string,
+	onChange: PropTypes.func,
+	onSubmit: PropTypes.func
 };
 
 module.exports = List;
