@@ -63,8 +63,7 @@ class List extends Component {
 		this.setState({cursor: -1});
 		stdin.removeListener('keypress', this.handleKeyPress);
 		if (this.props.onSubmit) {
-			this.props.onChange(this.state.checked);
-			this.props.onSubmit(values);
+			this.props.onSubmit(this.state.checked);
 		}
 	}
 

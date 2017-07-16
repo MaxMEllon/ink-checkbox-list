@@ -2,7 +2,6 @@ import test from 'ava';
 import {spy} from 'sinon';
 import {
 	h,
-	render as build,
 	renderToString,
 	Text
 } from 'ink';
@@ -10,51 +9,49 @@ import {List, ListItem} from '../lib/index';
 import Cursor from '../lib/components/cursor';
 import CheckBox from '../lib/components/check-box';
 
-const render = tree => renderToString(build(tree));
-
 test('no item', t => {
-	t.is(render(<List/>), '');
+	t.is(renderToString(<List/>), '');
 });
 
 test('blank child in list item', t => {
-	t.is(render(<ListItem/>), '\n');
+	t.is(renderToString(<ListItem/>), '\n');
 });
 
-test('render simple case', t => {
-	t.is(render(<ListItem>sample</ListItem>), 'sample\n');
+test('renderToString simple case', t => {
+	t.is(renderToString(<ListItem>sample</ListItem>), 'sample\n');
 });
 
-test('render rich child component', t => {
-	t.is(render(<ListItem><Text>s</Text></ListItem>), 's\n');
+test('renderToString rich child component', t => {
+	t.is(renderToString(<ListItem><Text>s</Text></ListItem>), 's\n');
 });
 
 test('checkbox', t => {
-	t.is(render(
+	t.is(renderToString(
 		<CheckBox
 			checkedCharacter="[x]"
 			uncheckedCharacter="[ ]"
 			isChecked={false}
 		/>
-	), render(<Text green>{` [ ]  `}</Text>));
+	), renderToString(<Text green>{` [ ]  `}</Text>));
 
-	t.is(render(
+	t.is(renderToString(
 		<CheckBox
 			checkedCharacter="[x]"
 			uncheckedCharacter="[ ]"
 			isChecked
 		/>
-	), render(<Text green>{` [x]  `}</Text>));
+	), renderToString(<Text green>{` [x]  `}</Text>));
 });
 
 test('cursor', t => {
-	t.is(render(
+	t.is(renderToString(
 		<Cursor
 			cursorCharacter="--->"
 			isActive
 		/>
 	), '---> ');
 
-	t.is(render(
+	t.is(renderToString(
 		<Cursor
 			cursorCharacter="--->"
 			isActive={false}
@@ -67,7 +64,7 @@ test('called `onChange` when user pressed space key', t => {
 	const onChange = spy();
 	const onSubmit = spy();
 
-	render(<List ref={setRef} onChange={onChange} onSubmit={onSubmit}/>);
+	renderToString(<List ref={setRef} onChange={onChange} onSubmit={onSubmit}/>);
 
 	const ref = setRef.firstCall.args[0];
 	ref.handleKeyPress('', {name: 'space'});
@@ -81,7 +78,7 @@ test('called `onSubmit` when user pressed return key', t => {
 	const onChange = spy();
 	const onSubmit = spy();
 
-	render(<List ref={setRef} onChange={onChange} onSubmit={onSubmit}/>);
+	renderToString(<List ref={setRef} onChange={onChange} onSubmit={onSubmit}/>);
 
 	const ref = setRef.firstCall.args[0];
 	ref.handleKeyPress('', {name: 'return'});
