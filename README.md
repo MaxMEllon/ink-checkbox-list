@@ -1,4 +1,4 @@
-# Ink-checkbox-list [![Build Status](https://travis-ci.org/MaxMEllon/ink-checkbox-list.svg?branch=master)](https://travis-ci.org/MaxMEllon/ink-checkbox-list) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+# ink-checkbox-list [![Build Status](https://travis-ci.org/MaxMEllon/ink-checkbox-list.svg?branch=master)](https://travis-ci.org/MaxMEllon/ink-checkbox-list) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 > Checkbox list component for [Ink](https://github.com/vadimdemedes/ink)
 
@@ -13,16 +13,6 @@ Install
 ```
 $ npm install ink-checkbox-list
 ```
-
-Key bindings
----
-
-| key | action |
-|---|---|
-| <kbd>Space</kbd>| toggle check/uncheck |
-| <kbd>Enter</kbd>| submit item list |
-| <kbd>↑</kbd>| move to up a cursor |
-| <kbd>↓</kbd>| move to down a cursor |
 
 Usage
 ---
@@ -41,11 +31,6 @@ const unmount = mount(
 		<ListItem>aaaa</ListItem>
 	</List>
 );
-
-setTimeout(() => {
-	unmount();
-	process.exit(1);
-}, 10000);
 ```
 
 **Note**:
@@ -64,15 +49,13 @@ process.stdin.setRawMode(true);
 ### checkedChar
 
 Type: `string`
-
 Default: `☒`
 
 This character is used checked component.
 
-### nocheckedChar
+### uncheckedChar
 
 Type: `string`
-
 Default: `☐`
 
 This character is used unchecked component.
@@ -80,7 +63,6 @@ This character is used unchecked component.
 ### cursorChar
 
 Type: `string`
-
 Default: `❯`
 
 This character is used current cursor line.
@@ -96,6 +78,16 @@ Function to call when user `check`. (<kbd>Space</kbd>)
 Type: `Function`
 
 Function to call when user `submit`. (<kbd>Enter</kbd>)
+
+Key bindings
+---
+
+| key | action |
+|---|---|
+| <kbd>Space</kbd>| toggle check/uncheck |
+| <kbd>Enter</kbd>| submit item list |
+| <kbd>↑</kbd>| move to up a cursor |
+| <kbd>↓</kbd>| move to down a cursor |
 
 LICENSE
 ---
