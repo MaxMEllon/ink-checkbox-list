@@ -56,7 +56,7 @@ test('cursor', t => {
 			cursorCharacter="--->"
 			isActive={false}
 		/>
-	), '     ');
+	), '\u00A0'.repeat(5));
 });
 
 test('called `onChange` when user pressed space key', t => {
