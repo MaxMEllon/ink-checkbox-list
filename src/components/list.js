@@ -1,4 +1,4 @@
-const {h, Component} = require('ink');
+const React = require('react');
 const figures = require('figures');
 const PropTypes = require('prop-types');
 const CheckBox = require('./check-box');
@@ -6,12 +6,14 @@ const Cursor = require('./cursor');
 
 const stdin = process.stdin;
 
-class List extends Component {
+class List extends React.Component {
 	constructor(props) {
 		super(props);
+		let {children} = this.props;
+		let checkedList = children.map((_,i) => _.props.checked ? i : null).filter(_ => _ != null)
 		this.state = {
 			cursor: 0,
-			checked: []
+			checked: checkedList
 		};
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 	}
@@ -22,7 +24,7 @@ class List extends Component {
 
 	get childValues() {
 		const {children} = this.props;
-		const filteredChildren = children.filter((_, i) => this.state.checked.includes(i));
+		const filteredChildren = children.filter((child, i) => this.state.checked.includes(i) && !child.props.disabled );
 		return filteredChildren.map(child => child.props.value);
 	}
 
@@ -103,22 +105,27 @@ class List extends Component {
 		}
 	}
 
-	render(props) {
+	render() {
 		const {cursor} = this.state;
-		const {cursorCharacter, checkedCharacter, uncheckedCharacter} = props;
+		const {cursorCharacter, checkedCharacter, uncheckedCharacter, disabledCharacter} = this.props;
+		const sStyle = {
+			flexDirection: 'row'
+		}
 		return (
 			<span>
 				{
-					props.children.map((co, i) => (
-						<span>
+					this.props.children.map((co, i) => (
+						<span style={sStyle} key={i}>
 							<Cursor
 								isActive={cursor === i}
 								cursorCharacter={cursorCharacter}
 							/>
 							<CheckBox
 								isChecked={this.state.checked.includes(i)}
+								isDisabled={co.props.disabled}
 								checkedCharacter={checkedCharacter}
 								uncheckedCharacter={uncheckedCharacter}
+								disabledCharacter={disabledCharacter}
 							/>
 							{co}
 						</span>
@@ -132,13 +139,15 @@ class List extends Component {
 List.defaultProps = {
 	cursorCharacter: figures.pointer,
 	checkedCharacter: figures.checkboxOn,
-	uncheckedCharacter: figures.checkboxOff
+	uncheckedCharacter: figures.checkboxOff,
+	disabledCharacter: figures.bullet
 };
 
 List.propTypes = {
 	cursorCharacter: PropTypes.string,
 	checkedCharacter: PropTypes.string,
 	uncheckedCharacter: PropTypes.string,
+	disabledCharacter: PropTypes.string,
 	onChange: PropTypes.func,
 	onSubmit: PropTypes.func
 };

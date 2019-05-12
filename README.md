@@ -28,10 +28,10 @@ render(
 			process.exit(0);
 		}}
 	>
-		<ListItem value="1">option1</ListItem>
-		<ListItem value="2">option2</ListItem>
+		<ListItem value="1" checked>option1</ListItem>
+		<ListItem value="2" disabled>option2</ListItem>
 		<ListItem value="3">option3</ListItem>
-		<ListItem value="4">option4</ListItem>
+		<ListItem value="4" checked>option4</ListItem>
 	</List>
 );
 ```
@@ -62,6 +62,13 @@ This character is used checked component.
 
 Type: `string`
 Default: `☐`
+
+This character is used unchecked component.
+
+#### disabledChar
+
+Type: `string`
+Default: `●`
 
 This character is used unchecked component.
 

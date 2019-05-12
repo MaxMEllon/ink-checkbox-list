@@ -1,4 +1,4 @@
-const {h} = require('ink');
+const React = require('react');
 
 function Cursor({cursorCharacter, isActive}) {
 	const c = isActive === true ?
