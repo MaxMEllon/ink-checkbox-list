@@ -28,31 +28,16 @@
 		"test": "xo && ava"
 	},
 	"babel": {
-		"plugins": [
-			[
-				"transform-react-jsx",
-				{
-					"pragma": "h",
-					"useBuiltIns": true
-				}
-			],
-			"babel-plugin-array-includes"
+		"presets": [
+			"@babel/preset-react",
+			"@babel/preset-env"
 		]
 	},
 	"ava": {
 		"babel": {
 			"presets": [
-				"@ava/stage-4"
-			],
-			"plugins": [
-				[
-					"babel-plugin-array-includes",
-					"transform-react-jsx",
-					{
-						"pragma": "h",
-						"useBuiltIns": true
-					}
-				]
+				"@babel/preset-react",
+				"@babel/preset-env"
 			]
 		}
 	},
@@ -77,21 +62,21 @@
 	},
 	"devDependencies": {
 		"ava": "^0.20.0",
-		"babel-cli": "^6.24.1",
-		"babel-plugin-array-includes": "^2.0.3",
-		"babel-plugin-transform-react-jsx": "^6.24.1",
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.3.3",
+		"@babel/plugin-proposal-class-properties": "^7.3.3",
+		"@babel/preset-env": "^7.4.4",
+		"@babel/preset-react": "^7.0.0",
 		"eslint-config-xo-react": "^0.13.0",
 		"eslint-plugin-react": "^7.1.0",
-		"ink": "0.5.1",
+		"ink": "^2.0.0",
 		"sinon": "^2.3.7",
 		"standard": "^10.0.2",
 		"xo": "^0.18.2"
 	},
-	"peerDependencies": {
-		"ink": "^0.3.0 || ^0.5.0"
-	},
 	"dependencies": {
 		"figures": "^2.0.0",
-		"prop-types": "^15.5.10"
+		"prop-types": "^15.5.10",
+		"react": "^16.8.6"
 	}
 }

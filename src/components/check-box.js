@@ -1,7 +1,9 @@
-const {h, Text} = require('ink');
+const {Text} = require('ink');
+const React = require('react');
 
-function CheckBox({checkedCharacter, uncheckedCharacter, isChecked}) {
-	const mark = isChecked === true ? checkedCharacter : uncheckedCharacter;
+function CheckBox({checkedCharacter, uncheckedCharacter, disabledCharacter, isChecked, isDisabled}) {
+	let mark = isChecked === true ? checkedCharacter : uncheckedCharacter;
+	mark = isDisabled === true ? disabledCharacter : mark;
 	return (
 		<Text green>{` ${mark}  `}</Text>
 	);
